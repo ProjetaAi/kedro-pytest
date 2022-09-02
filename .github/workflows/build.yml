@@ -18,7 +18,7 @@ jobs:
     - name: Test code
       run: |
         pip install .[test]
-        pip uninstall -y pytest-tmpfs
+        pip uninstall -y kedro-pytest
         pytest
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v2
