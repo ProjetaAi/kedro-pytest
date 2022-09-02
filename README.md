@@ -1,4 +1,8 @@
 # kedro-pytest
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/projetaai/kedro-pytest/Build)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/projetaai/kedro-pytest/Release?label=release)
+![Codecov](https://img.shields.io/codecov/c/gh/projetaai/kedro-pytest)
+![PyPI](https://img.shields.io/pypi/v/kedro-pytest)
 
 Helps you testing `Kedro` plugins with `pytest`.
 
