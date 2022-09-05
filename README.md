@@ -61,13 +61,14 @@ You can always use fixtures in doctests. To do so, you have to inject it into
 the doctest namespace in the `conftest` file.
 
 ```python
-# conftest.py
 @pytest.fixture(autouse=True)
 def add_to_doctests(doctest_namespace: dict, tkedro: TestKedro):
     """Adds the tkedro fixture to the doctest namespace."""
     doctest_namespace["kedro"] = tkedro
+```
+**conftest.py**
 
-# code.py
+```python
 def function():
   """
   Example:
@@ -77,6 +78,7 @@ def function():
   """
   ...
 ```
+**code.py**
 
 ### Your own instance
 
@@ -106,9 +108,14 @@ The following table contains all methods that `TestKedro` implements and its des
 | `run` | Runs a pipeline in the project. | pipeline: str, run_command: list[str] | `click.testing.Result` |
 | `stop` | Cleans the temporary directory. | ~ | ~ |
 
-> Note: The create_pipeline method differs from the cli command because it doesn't need to have a downloaded starter to work.
+> **Note**
+> The create_pipeline method differs from the cli command because it creates a minimal pipeline (a pipeline.py with a dummy implementation, a catalog.yml, and a 
+> parameters.yml), and it automatically adds the pipeline to the registry, while the cli create_pipeline would create a folder containing a clean pipeline skeleton and 
+> will not add it to the registry.
 
-> Warning: cwd switches between temporary and the last cwd when using new and stop methods of TestKedro. A new instance of the fixture is created for each test, so you don't have to worry about it in tests, but in doctests it may be useful. Also, the use of stop can be avoided by using with statements.
+> **Warning**
+> cwd switches between temporary and the last cwd when using new and stop methods of TestKedro. A new instance of the fixture is created for each test, so you don't 
+> have to worry about it in tests, but in doctests it may be useful. Also, the use of stop can be avoided by using with statements.
 
 ## Advanced usage
 
@@ -126,6 +133,6 @@ def test_advanced(tkedro: TestKedro):
 
 ## Contributing
 
-Feel free to contribute with this project, just remember to install and use pre-commit and to write unit tests for it.
+Feel free to contribute to this project, just remember to install pre-commit, and to write unit tests for it.
 
 
