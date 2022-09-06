@@ -2,4 +2,4 @@
 from kedro_pytest.test_kedro import TestKedro
 
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'
