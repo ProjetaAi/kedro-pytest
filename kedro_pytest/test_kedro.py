@@ -5,7 +5,7 @@ from typing import Any, List, Union, cast
 from pytest_tmpfs import TmpFs
 from kedro import __version__ as kedro_version
 from kedro.framework.cli.cli import KedroCLI
-from kedro.framework.project import configure_project
+from kedro.framework.startup import bootstrap_project
 from click import Command
 from click.testing import CliRunner, Result
 import yaml
@@ -79,7 +79,7 @@ class TestKedro:
     def _setup_project(self):
         # Changes cwd to the project directory.
         self.fs.tmp_cwd()
-        configure_project(self.project)
+        bootstrap_project(self.fs.path('.'))
 
     def _init_cli(self):
         """Initializes the CLI."""
